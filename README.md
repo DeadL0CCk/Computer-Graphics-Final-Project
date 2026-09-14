@@ -69,61 +69,58 @@ The application opens directly on Scenario 1 and lets the user move between scen
   - L: light color
   - F: snow squall
 
-## Prerequisites
+## Build and run (Windows)
 
-This project is written for Windows and uses OpenGL + GLUT.
+`CityLifeFinalFile.cpp` includes:
 
-Required tools and libraries:
+- `windows.h` for the Windows platform
+- `GL/gl.h` for the legacy OpenGL 1.x API
+- `GL/glut.h` for the GLUT window, input, timer, and bitmap-font APIs
+- C++ standard headers only (`cmath`, `cstdlib`, `cstdio`, `cstring`, `ctime`, and `iostream`)
 
-- Windows operating system
-- C++ compiler with C++11 support
-- OpenGL library
-- FreeGLUT library
-- GLU library
+The source does not call any GLU functions, so `glu32` is not a required link library. The required native libraries are:
 
-Typical toolchains include:
+- **OpenGL32**: the Windows system library, linked as `-lopengl32`
+- **FreeGLUT**: the GLUT implementation, providing `GL/glut.h`, `libfreeglut.a` (or an equivalent import library), and `freeglut.dll`
 
-- MinGW with g++
-- Code::Blocks with the GNU GCC compiler
+You also need a Windows MinGW g++ compiler with C++11 support. The command below assumes that MinGW and FreeGLUT are installed and that the FreeGLUT include and library directories are already on the compiler search path:
 
-## Build instructions
-
-### Option 1: Code::Blocks
-
-1. Open the project in Code::Blocks.
-2. Ensure the compiler is configured to use the C++11 standard.
-3. In the compiler settings, enable the flag:
-
-   -std=gnu++11
-
-   or use the equivalent option in the GUI for "Have g++ follow the C++11 ISO C++ language standard".
-4. Build the project.
-
-### Option 2: Command line (MinGW / g++)
-
-From the project directory, run:
-
-```bash
-g++ -std=gnu++11 CityLifeFinalFile.cpp -o CityLife -lfreeglut -lopengl32 -lglu32
+```text
+g++ -std=gnu++11 CityLifeFinalFile.cpp -o CityLife.exe -lfreeglut -lopengl32
 ```
 
-If you are using a Windows environment with FreeGLUT correctly installed and configured, this should produce a runnable binary.
+If FreeGLUT is installed in non-standard directories, add its paths explicitly, for example:
 
-## Run the program
+```text
+g++ -std=gnu++11 -IC:\path\to\freeglut\include -LC:\path\to\freeglut\lib CityLifeFinalFile.cpp -o CityLife.exe -lfreeglut -lopengl32
+```
 
-After building, execute the output binary:
+Place `freeglut.dll` beside `CityLife.exe` (or on `PATH`) before launching. In Code::Blocks, select the GNU GCC compiler, enable C++11 (equivalent to `-std=gnu++11`), add the FreeGLUT include and library directories, and add `freeglut` and `opengl32` to the linker libraries.
 
-```bash
+### Verification in this repository environment
+
+The available compiler is MinGW.org GCC 6.3.0 (`g++`). I ran:
+
+```text
+g++ -std=gnu++11 CityLifeFinalFile.cpp -o CityLife.exe -lfreeglut -lopengl32
+```
+
+Compilation could not be completed because this environment does not have the FreeGLUT import library installed:
+
+```text
+ld.exe: cannot find -lfreeglut
+collect2.exe: error: ld returned 1 exit status
+```
+
+This is an environment dependency failure, not a source error. After installing/configuring FreeGLUT as described above, run the build command from the repository directory.
+
+After a successful build, run:
+
+```text
 CityLife.exe
 ```
 
-or, on a Unix-like shell environment if the binary is built there:
-
-```bash
-./CityLife
-```
-
-Once launched, the app starts in the coastal city scene and you can browse through the other scenarios using the keys above.
+The program opens in the coastal city scene. Use the controls above to switch scenes and interact with the demo.
 
 ## Screenshots
 
