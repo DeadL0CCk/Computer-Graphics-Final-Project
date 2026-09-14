@@ -127,7 +127,15 @@ Once launched, the app starts in the coastal city scene and you can browse throu
 
 ## Screenshots
 
-[Placeholder: Add screenshots of the four scenes here]
+Explore a few of the animated environments included in CityLife:
+
+| Dynamic Coastal City | Downtown Neon District |
+| --- | --- |
+| ![Dynamic Coastal City](docs/screenshots/dynamic-coastal-city.png) | ![Downtown Neon District](docs/screenshots/scene-two.png) |
+
+| Riverside Park |
+| --- |
+| ![Riverside Park](docs/screenshots/scene-three.png) |
 
 ## Notes
 
