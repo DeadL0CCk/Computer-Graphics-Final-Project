@@ -133,9 +133,9 @@ Explore a few of the animated environments included in CityLife:
 | --- | --- |
 | ![Dynamic Coastal City](docs/screenshots/dynamic-coastal-city.png) | ![Downtown Neon District](docs/screenshots/scene-two.png) |
 
-| Riverside Park |
-| --- |
-| ![Riverside Park](docs/screenshots/scene-three.png) |
+| Riverside Park | Winter Night Market |
+| --- | --- |
+| ![Riverside Park](docs/screenshots/scene-three.png) | ![Winter Night Market](docs/screenshots/scene-four.png) |
 
 ## Notes
 
